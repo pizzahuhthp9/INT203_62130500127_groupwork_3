@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Icon import -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body class="bg-gray"> 
+  <div id="app">
+    <div class="flex flex-row flex-wrap w-screen justify-center">
+      <div v-for="(thumbnail, index) in thumbnails" :key="index" class="flex flex-col">
+        <img :src="thumbnail.src" alt="" class="w-56 mx-8 my-8">
+        <span class="mx-10">
+          <div>{{thumbnail.name}}</div>
+          <i v-show="!thumbnail.toggle" @click="thumbnail.toggle=!thumbnail.toggle;thumbnail.like++;" class="fa fa-heart hover:text-red-300"></i>
+          <i v-show="thumbnail.toggle" @click="thumbnail.toggle=!thumbnail.toggle;thumbnail.like--;" class="fa fa-heart text-red-600 hover:text-gray-400"></i>
+          <span v-if="thumbnail.like > 0">{{thumbnail.like}} Like </span>
+          <span v-else class="opacity-0">{{thumbnail.like}} Like </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
